@@ -13,19 +13,32 @@ public class Ingredient : MonoBehaviour
     [Header("Type")]
     public IngredientType Type;
 
+    private Renderer _renderer;
+    private Collider _collider;
+
+    private void Awake()
+    {
+        _renderer = GetComponent<Renderer>();
+        _collider = GetComponent<Collider>();
+    }
+
     public void PickUp()
     {
         if (PickupState != IngredientPickupState.Pickupable) return;
 
         PickupState = IngredientPickupState.PickedUp;
-        gameObject.SetActive(false);
+
+        if (_renderer != null) _renderer.enabled = false;
+        if (_collider != null) _collider.enabled = false;
     }
 
     public void Drop(Vector3 worldPosition)
     {
         PickupState = IngredientPickupState.Pickupable;
-        gameObject.SetActive(true);
         transform.position = worldPosition;
+
+        if (_renderer != null) _renderer.enabled = true;
+        if (_collider != null) _collider.enabled = true;
     }
 
     public void Prepare()

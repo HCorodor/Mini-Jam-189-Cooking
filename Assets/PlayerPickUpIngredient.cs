@@ -4,60 +4,56 @@ public class PlayerPickUpIngredient : MonoBehaviour
 {
     public bool IsHoldingIngredient;
     public Ingredient HeldIngredient;
-    float pickUpRange = 2f;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private Ingredient _currentNearbyIngredient;
+
+    private void OnTriggerEnter(Collider other)
     {
-        IsHoldingIngredient = false;
+        Ingredient ingredient = other.GetComponent<Ingredient>();
+        if (ingredient != null && ingredient.PickupState == IngredientPickupState.Pickupable)
+        {
+            _currentNearbyIngredient = ingredient;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        if (Input.GetKey(KeyCode.E)&& !IsHoldingIngredient)
+        Ingredient ingredient = other.GetComponent<Ingredient>();
+        if (ingredient != null && ingredient == _currentNearbyIngredient)
+        {
+            _currentNearbyIngredient = null;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && !IsHoldingIngredient && _currentNearbyIngredient != null)
         {
             PickUpIngredient();
         }
-        if (Input.GetKey(KeyCode.Q) && IsHoldingIngredient)
+
+        if (Input.GetKeyDown(KeyCode.Q) && IsHoldingIngredient)
         {
             DropIngredient();
         }
-
-
     }
 
-    void PickUpIngredient()
+    private void PickUpIngredient()
     {
-        Debug.Log("Pickup Ingredient");
-        Collider[] hits = Physics.OverlapSphere(transform.position, pickUpRange);
-        Debug.Log(hits.Length);
-        
-        foreach(var hit in hits)
-        {
-            Debug.Log($"Hit: {hit.name}");
-            Ingredient ingredient = hit.GetComponent<Ingredient>();
-            if (ingredient != null && ingredient.PickupState == IngredientPickupState.Pickupable)
-            {
-                ingredient.PickUp();
-                HeldIngredient = ingredient;
-                IsHoldingIngredient = true;
-                break;
-            }
-
-        }
-
+        HeldIngredient = _currentNearbyIngredient;
+        Debug.Log(HeldIngredient.Type.ToString() + " picked up!");
+        HeldIngredient.PickUp();
+        IsHoldingIngredient = true;
+        _currentNearbyIngredient = null;
     }
 
-
-    void DropIngredient()
+    private void DropIngredient()
     {
-        if(HeldIngredient != null)
-        {
-            Vector3 dropPosition = transform.position + transform.forward;
-            HeldIngredient.Drop(dropPosition);
-            HeldIngredient = null;
-            IsHoldingIngredient = false;
-        }
-    }
+        if (HeldIngredient == null) return;
 
+        Vector3 dropPosition = transform.position + transform.forward;
+        HeldIngredient.Drop(dropPosition);
+        HeldIngredient = null;
+        IsHoldingIngredient = false;
+    }
 }
