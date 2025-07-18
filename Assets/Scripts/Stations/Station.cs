@@ -12,7 +12,7 @@ public abstract class Station : MonoBehaviour
 {
     protected StationState currentState = StationState.Idle;
     protected float progress = 0f;
-    protected bool hasIngredient = false;
+    protected Ingredient currentIngredient;
 
     [SerializeField] protected float prepareTime = 3f;
     [SerializeField] private Image _progressBarFill;
@@ -66,7 +66,12 @@ public abstract class Station : MonoBehaviour
 
     protected virtual void TryStartPreparation()
     {
-        if (!hasIngredient) return;
+        if (currentIngredient == null) return;
+        if (!currentIngredient.CanBePreparedAt(this))
+        {
+            Debug.Log($"{currentIngredient.Type} cannot be prepared at {gameObject.name}");
+            return;
+        }
 
         currentState = StationState.Preparing;
         progress = 0f;
@@ -80,24 +85,32 @@ public abstract class Station : MonoBehaviour
     protected virtual void OnPreparationFinished()
     {
         currentState = StationState.Finished;
+        currentIngredient.Prepare();
         Debug.Log($"{gameObject.name}: Finished preparing");
     }
 
     protected virtual void TryTakePreparedItem()
     {
-        // Simulate taking the item away
-        hasIngredient = false;
+        if (currentIngredient == null) return;
+
+        currentIngredient.gameObject.SetActive(true);
+        currentIngredient.transform.position = transform.position + Vector3.right; // Drop beside
+
         currentState = StationState.Idle;
+
         if (_progressBarFill != null) _progressBarFill.fillAmount = 0f;
+
         Debug.Log($"{gameObject.name}: Item taken");
+
+        currentIngredient = null;
     }
 
-    // For testing, you can simulate inserting an ingredient
-    public virtual void InsertIngredient()
+    public virtual void InsertIngredient(Ingredient ingredient)
     {
         if (currentState != StationState.Idle) return;
 
-        hasIngredient = true;
-        Debug.Log($"{gameObject.name}: Ingredient inserted");
+        currentIngredient = ingredient;
+        ingredient.gameObject.SetActive(false);
+        Debug.Log($"{gameObject.name}: {ingredient.Type} inserted");
     }
 }
