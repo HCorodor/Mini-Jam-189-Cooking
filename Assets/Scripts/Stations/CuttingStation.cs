@@ -4,13 +4,13 @@ public class CuttingStation : Station
 {
     private void Start()
     {
-        InsertIngredient();
+        Ingredient testIngredient = FindObjectOfType<Ingredient>();
+        InsertIngredient(testIngredient);
     }
 
     protected override void OnPreparationFinished()
     {
         base.OnPreparationFinished();
         Debug.Log("Cutting done!");
-        // Maybe play some cutting sound or spawn particle here
     }
 }
