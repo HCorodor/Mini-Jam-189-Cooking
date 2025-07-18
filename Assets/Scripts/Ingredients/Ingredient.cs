@@ -13,14 +13,16 @@ public class Ingredient : MonoBehaviour
     [Header("Type")]
     public IngredientType Type;
 
-    private Renderer _renderer;
-    private Collider _collider;
+    private Renderer[] _renderers;
+    private Collider[] _colliders;
+
 
     private void Awake()
     {
-        _renderer = GetComponent<Renderer>();
-        _collider = GetComponent<Collider>();
+        _renderers = GetComponentsInChildren<Renderer>();
+        _colliders = GetComponentsInChildren<Collider>();
     }
+
 
     public void PickUp()
     {
@@ -28,8 +30,9 @@ public class Ingredient : MonoBehaviour
 
         PickupState = IngredientPickupState.PickedUp;
 
-        if (_renderer != null) _renderer.enabled = false;
-        if (_collider != null) _collider.enabled = false;
+        // Disable all visuals and colliders
+        foreach (var r in _renderers) r.enabled = false;
+        foreach (var c in _colliders) c.enabled = false;
     }
 
     public void Drop(Vector3 worldPosition)
@@ -37,8 +40,9 @@ public class Ingredient : MonoBehaviour
         PickupState = IngredientPickupState.Pickupable;
         transform.position = worldPosition;
 
-        if (_renderer != null) _renderer.enabled = true;
-        if (_collider != null) _collider.enabled = true;
+        // Enable all visuals and colliders
+        foreach (var r in _renderers) r.enabled = true;
+        foreach (var c in _colliders) c.enabled = true;
     }
 
     public void Prepare()

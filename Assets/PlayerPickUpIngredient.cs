@@ -7,7 +7,7 @@ public class PlayerPickUpIngredient : MonoBehaviour
 
     private Ingredient _currentNearbyIngredient;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Ingredient ingredient = other.GetComponent<Ingredient>();
         if (ingredient != null && ingredient.PickupState == IngredientPickupState.Pickupable)
@@ -16,7 +16,7 @@ public class PlayerPickUpIngredient : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         Ingredient ingredient = other.GetComponent<Ingredient>();
         if (ingredient != null && ingredient == _currentNearbyIngredient)
