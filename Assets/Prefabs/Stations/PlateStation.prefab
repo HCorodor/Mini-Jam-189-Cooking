@@ -183,6 +183,8 @@ MonoBehaviour:
   prepareTime: 3
   _progressBarFill: {fileID: 7389766480068397059}
   _allRecipes:
+  - {fileID: 11400000, guid: 7d0e5b5d77beb0648aa271a52662ad2a, type: 2}
+  - {fileID: 11400000, guid: f9dd96d99c5f6bf44843b1e41df4efb8, type: 2}
   - {fileID: 11400000, guid: 7f230b5408a05f94497839d584e94b17, type: 2}
 --- !u!1001 &2869000413057725340
 PrefabInstance:

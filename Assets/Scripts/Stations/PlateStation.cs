@@ -14,10 +14,20 @@ public class PlateStation : Station
 
         _ingredientsOnPlate.Add(ingredient);
         Debug.Log($"Added {ingredient.Type} to plate station.");
-        CheckForCompletedDish();
+
+        bool isCompleteDish = TrySubmitDish();
+
+        if (isCompleteDish)
+        {
+            ClearPlate();
+        }
+        else
+        {
+            Debug.Log("Current Plate does not match any recipe yet");
+        }
     }
 
-    private void CheckForCompletedDish()
+    private bool TrySubmitDish()
     {
         foreach (var recipe in _allRecipes)
         {
@@ -37,10 +47,10 @@ public class PlateStation : Station
                     Debug.Log("Dish completed, but no matching order found.");
                 }
 
-                ClearPlate();
-                break;
+                return success;
             }
         }
+        return false;
     }
 
     private bool RecipeMatches(DishRecipe recipe)
@@ -56,5 +66,6 @@ public class PlateStation : Station
             Destroy(ing.gameObject);
         }
         _ingredientsOnPlate.Clear();
+        Debug.Log("Plate cleared.");
     }
 }
