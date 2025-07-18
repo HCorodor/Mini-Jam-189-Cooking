@@ -3,6 +3,7 @@ using UnityEngine;
 public class InteractWithStation : MonoBehaviour
 {
     private Station _currentNearbyStation;
+    public Station CurrentStation => _currentNearbyStation;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -26,13 +27,11 @@ public class InteractWithStation : MonoBehaviour
 
     void Update()
     {
-        // Like ingredient pickup, trigger interaction when pressing key
         if (Input.GetKeyDown(KeyCode.Space) && _currentNearbyStation != null)
         {
             _currentNearbyStation.Interact();
         }
 
-        // Keep station progress moving if we’re near it
         if (_currentNearbyStation != null)
         {
             _currentNearbyStation.ManualUpdate();

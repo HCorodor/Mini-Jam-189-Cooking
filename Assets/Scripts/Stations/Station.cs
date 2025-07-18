@@ -27,7 +27,7 @@ public abstract class Station : MonoBehaviour
         _colliders = GetComponentsInChildren<Collider>();
     }
 
-    // External scripts must call this
+
     public void ManualUpdate()
     {
         if (currentState == StationState.Preparing)
@@ -94,14 +94,28 @@ public abstract class Station : MonoBehaviour
     {
         if (currentIngredient == null) return;
 
+
+        PlayerPickUpIngredient player = FindObjectOfType<PlayerPickUpIngredient>();
+
+        if (player != null && !player.IsHoldingIngredient)
+        {
+            player.ReceiveIngredient(currentIngredient);
+            Debug.Log($"{gameObject.name}: Item given to player");
+
+            currentState = StationState.Idle;
+            if (_progressBarFill != null) _progressBarFill.fillAmount = 0f;
+
+            currentIngredient = null;
+            return;
+        }
+
         currentIngredient.gameObject.SetActive(true);
         currentIngredient.transform.position = transform.position + Vector3.right;
 
         currentState = StationState.Idle;
-
         if (_progressBarFill != null) _progressBarFill.fillAmount = 0f;
 
-        Debug.Log($"{gameObject.name}: Item taken");
+        Debug.Log($"{gameObject.name}: Item dropped");
 
         currentIngredient = null;
     }

@@ -51,9 +51,29 @@ public class PlayerPickUpIngredient : MonoBehaviour
     {
         if (HeldIngredient == null) return;
 
-        Vector3 dropPosition = transform.position + transform.forward;
-        HeldIngredient.Drop(dropPosition);
-        HeldIngredient = null;
-        IsHoldingIngredient = false;
+        Station nearbyStation = GetComponent<InteractWithStation>()?.CurrentStation;
+
+        if (nearbyStation != null)
+        {
+            nearbyStation.InsertIngredient(HeldIngredient);
+            HeldIngredient = null;
+            IsHoldingIngredient = false;
+        }
+        else
+        {
+            Vector3 dropPosition = transform.position + transform.right;
+            HeldIngredient.Drop(dropPosition);
+            HeldIngredient = null;
+            IsHoldingIngredient = false;
+        }
+    }
+
+    public void ReceiveIngredient(Ingredient ingredient)
+    {
+        HeldIngredient = ingredient;
+        Debug.Log($"[ReceiveIngredient] Received: {ingredient.Type}, PrepareState: {ingredient.PrepareState}");
+        IsHoldingIngredient = true;
+        ingredient.PickUp();
+        
     }
 }
