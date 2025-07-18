@@ -10,6 +10,9 @@ public enum StationState
 
 public abstract class Station : MonoBehaviour
 {
+    private Renderer[] _renderers;
+    private Collider[] _colliders;
+
     protected StationState currentState = StationState.Idle;
     protected float progress = 0f;
     protected Ingredient currentIngredient;
@@ -17,13 +20,20 @@ public abstract class Station : MonoBehaviour
     [SerializeField] protected float prepareTime = 3f;
     [SerializeField] private Image _progressBarFill;
 
-    protected virtual void Update()
+
+    private void Awake()
+    {
+        _renderers = GetComponentsInChildren<Renderer>();
+        _colliders = GetComponentsInChildren<Collider>();
+    }
+
+    // External scripts must call this
+    public void ManualUpdate()
     {
         if (currentState == StationState.Preparing)
         {
             progress += Time.deltaTime;
 
-            // Clamp progress
             if (progress > prepareTime)
             {
                 progress = prepareTime;
@@ -39,12 +49,6 @@ public abstract class Station : MonoBehaviour
                 OnPreparationFinished();
             }
         }
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Debug.Log("Space is down");
-            Interact();
-        }
     }
 
     public virtual void Interact()
@@ -57,9 +61,6 @@ public abstract class Station : MonoBehaviour
 
             case StationState.Finished:
                 TryTakePreparedItem();
-                break;
-
-            default:
                 break;
         }
     }
@@ -94,7 +95,7 @@ public abstract class Station : MonoBehaviour
         if (currentIngredient == null) return;
 
         currentIngredient.gameObject.SetActive(true);
-        currentIngredient.transform.position = transform.position + Vector3.right; // Drop beside
+        currentIngredient.transform.position = transform.position + Vector3.right;
 
         currentState = StationState.Idle;
 

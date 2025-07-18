@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum IngredientPrepareState { Unprepared, Prepared, Misprepared }
 public enum IngredientPickupState { Pickupable, PickedUp }
-public enum IngredientType { Lettuce, Meat}
+public enum IngredientType { Lettuce, Meat }
 
 public class Ingredient : MonoBehaviour
 {
