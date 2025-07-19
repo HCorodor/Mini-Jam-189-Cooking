@@ -8,6 +8,34 @@ public class PlateStation : Station
 
     private List<Ingredient> _ingredientsOnPlate = new();
 
+    public override void Interact()
+    {
+        PlayerPickUpIngredient player = FindObjectOfType<PlayerPickUpIngredient>();
+
+        if (player != null && player.IsHoldingIngredient)
+        {
+            Ingredient held = player.HeldIngredient;
+
+            if (held.PrepareState == IngredientPrepareState.Prepared)
+            {
+                InsertIngredient(held);
+
+                player.HeldIngredient = null;
+                player.IsHoldingIngredient = false;
+
+                Debug.Log("Ingredient added to plate via Interact.");
+            }
+            else
+            {
+                Debug.Log("Cannot plate wrongly prepared ingredient");
+            }
+        }
+        else
+        {
+            Debug.Log("Player is not holding an ingredient.");
+        }
+    }
+
     public override void InsertIngredient(Ingredient ingredient)
     {
         if (ingredient.PrepareState != IngredientPrepareState.Prepared) return;

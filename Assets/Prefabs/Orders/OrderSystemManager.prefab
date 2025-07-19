@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _possibleDishes:
-  - {fileID: 11400000, guid: 7d0e5b5d77beb0648aa271a52662ad2a, type: 2}
+  - {fileID: 11400000, guid: 7f230b5408a05f94497839d584e94b17, type: 2}
   _orderInterval: 10
   _orderTimeLimit: 20
