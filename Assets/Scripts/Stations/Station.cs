@@ -87,8 +87,6 @@ public abstract class Station : MonoBehaviour
         currentState = StationState.Finished;
         currentIngredient.Prepare();
         Debug.Log($"{gameObject.name}: Finished preparing");
-        InteractWithStation player = FindObjectOfType<InteractWithStation>();
-        player.InteractionFinished();
     }
 
     protected virtual void TryTakePreparedItem()
@@ -128,5 +126,18 @@ public abstract class Station : MonoBehaviour
         currentIngredient = ingredient;
         ingredient.gameObject.SetActive(false);
         Debug.Log($"{gameObject.name}: {ingredient.Type} inserted");
+    }
+
+    public virtual bool IsBeingUsedByPlayer()
+    {
+        return currentState == StationState.Preparing && PlayerIsNearby();
+    }
+
+    protected virtual bool PlayerIsNearby()
+    {
+        var player = FindObjectOfType<InteractWithStation>();
+        if (player == null) return false;
+
+        return Vector2.Distance(player.transform.position, transform.position) < 1.5f;
     }
 }

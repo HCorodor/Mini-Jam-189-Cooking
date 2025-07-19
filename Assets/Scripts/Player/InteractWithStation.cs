@@ -3,7 +3,6 @@ using UnityEngine;
 public class InteractWithStation : MonoBehaviour
 {
     private Animator anim;
-    private bool isInteracting = false;
     private Station _currentNearbyStation;
     public Station CurrentStation => _currentNearbyStation;
 
@@ -34,25 +33,22 @@ public class InteractWithStation : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) && _currentNearbyStation != null)
+        // ✅ Trigger interaction ONCE
+        if (Input.GetKeyDown(KeyCode.Space) && _currentNearbyStation != null)
         {
-            if (!isInteracting)
-            {
-                isInteracting = true;
-                anim.SetBool("isInteracting", true);
-            }
             _currentNearbyStation.Interact();
         }
 
+        // ✅ Only animate if station is actively being used AND player is nearby
+        bool shouldAnimateInteraction = _currentNearbyStation != null &&
+                                        _currentNearbyStation.IsBeingUsedByPlayer();
+
+        anim.SetBool("isInteracting", shouldAnimateInteraction);
+
+        // ✅ Station logic update
         if (_currentNearbyStation != null)
         {
             _currentNearbyStation.ManualUpdate();
         }
-    }
-
-    public void InteractionFinished()
-    {
-        isInteracting = false;
-        anim.SetBool("isInteracting", false);
     }
 }
