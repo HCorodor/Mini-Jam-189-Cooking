@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5625149108360537170}
   - component: {fileID: 6026015423377655499}
   - component: {fileID: 4445220251332602912}
+  - component: {fileID: 7166087758821748032}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -227,3 +228,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7166087758821748032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3992231011695995524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9411a509465294c874870547440f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climbSpeed: 3
