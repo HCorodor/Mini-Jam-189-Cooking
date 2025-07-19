@@ -73,7 +73,6 @@ public abstract class Station : MonoBehaviour
             Debug.Log($"{currentIngredient.Type} cannot be prepared at {gameObject.name}");
             return;
         }
-
         currentState = StationState.Preparing;
         progress = 0f;
 
@@ -88,6 +87,8 @@ public abstract class Station : MonoBehaviour
         currentState = StationState.Finished;
         currentIngredient.Prepare();
         Debug.Log($"{gameObject.name}: Finished preparing");
+        InteractWithStation player = FindObjectOfType<InteractWithStation>();
+        player.InteractionFinished();
     }
 
     protected virtual void TryTakePreparedItem()
