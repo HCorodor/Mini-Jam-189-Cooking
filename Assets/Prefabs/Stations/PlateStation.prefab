@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stationType: 2
-  _acceptedIngredients: 
+  _acceptedIngredients: 0000000001000000
   prepareTime: 3
   _progressBarFill: {fileID: 7389766480068397059}
   _allRecipes:
