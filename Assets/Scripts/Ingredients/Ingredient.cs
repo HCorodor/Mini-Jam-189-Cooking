@@ -48,14 +48,14 @@ public class Ingredient : MonoBehaviour
 
     public void Prepare()
     { 
-        if (PrepareState == IngredientPrepareState.Prepared)
+        switch (PrepareState)
         {
-            PrepareState = IngredientPrepareState.Misprepared;
-        }
-
-        if (PrepareState == IngredientPrepareState.Unprepared)
-        {
-            PrepareState = IngredientPrepareState.Prepared;
+            case IngredientPrepareState.Unprepared:
+                PrepareState = IngredientPrepareState.Prepared;
+                break;
+            case IngredientPrepareState.Prepared:
+                PrepareState = IngredientPrepareState.Misprepared;
+                break;
         }
     }
 }

@@ -55,14 +55,14 @@ public class PlayerPickUpIngredient : MonoBehaviour
 
         if (nearbyStation != null)
         {
-            bool succes = nearbyStation.InsertIngredient(HeldIngredient);
+            bool success = nearbyStation.InsertIngredient(HeldIngredient);
 
-            if (nearbyStation.InsertIngredient(HeldIngredient))
-                {
-                    HeldIngredient = null;
-                    IsHoldingIngredient = false;
-                    return;
-                }
+            if (success)
+            {
+                HeldIngredient = null;
+                IsHoldingIngredient = false;
+                return;
+            }
 
             Debug.Log("Station rejected the ingredient. You are still holding it.");
         }

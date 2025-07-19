@@ -5,6 +5,7 @@ public class OrderSystem : MonoBehaviour
 {
     public static OrderSystem Instance;
 
+    [SerializeField] private OrderUIManager _orderUIManager;
     [SerializeField] private List<DishRecipe> _possibleDishes;
     [SerializeField] private float _orderInterval = 10f;
     [SerializeField] private float _orderTimeLimit = 30f;
@@ -52,6 +53,8 @@ public class OrderSystem : MonoBehaviour
         var recipe = _possibleDishes[Random.Range(0, _possibleDishes.Count)];
         var order = new Order(recipe, _orderTimeLimit);
         _activeOrders.Add(order);
+
+        _orderUIManager.AddOrderUI(order);
 
         Debug.Log($"New Order added: {recipe.DishName}");
     }

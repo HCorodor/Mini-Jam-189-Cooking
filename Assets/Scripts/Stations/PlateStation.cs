@@ -33,6 +33,15 @@ public class PlateStation : Station
         else
         {
             Debug.Log("Player is not holding an ingredient.");
+            if (_ingredientsOnPlate.Count > 0)
+            {
+                ClearPlate();
+                Debug.Log("Player cleared the plate manually.");
+            }
+            else
+            {
+                Debug.Log("Plate is already empty.");
+            }
         }
     }
 
