@@ -132,4 +132,17 @@ public abstract class Station : MonoBehaviour
         Debug.Log($"{gameObject.name}: {ingredient.Type} inserted");
         return true;
     }
+
+    public virtual bool IsBeingUsedByPlayer()
+    {
+        return currentState == StationState.Preparing && PlayerIsNearby();
+    }
+
+    protected virtual bool PlayerIsNearby()
+    {
+        var player = FindObjectOfType<InteractWithStation>();
+        if (player == null) return false;
+
+        return Vector2.Distance(player.transform.position, transform.position) < 1.5f;
+    }
 }
