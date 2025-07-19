@@ -180,6 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e15435ea72f9304090c55d09f8cbb28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stationType: 0
+  _acceptedIngredients: 00000000
   prepareTime: 3
   _progressBarFill: {fileID: 8589561214352504985}
 --- !u!1001 &3920741576789574406

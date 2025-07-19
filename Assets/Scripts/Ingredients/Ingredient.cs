@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public enum IngredientPrepareState { Unprepared, Prepared, Misprepared }
 public enum IngredientPickupState { Pickupable, PickedUp }
@@ -56,11 +57,5 @@ public class Ingredient : MonoBehaviour
         {
             PrepareState = IngredientPrepareState.Prepared;
         }
-    }
-
-    public bool CanBePreparedAt(Station station)
-    {
-        if (station is CuttingStation && Type == IngredientType.Lettuce) return true;
-        return false;
     }
 }

@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class CuttingStation : Station
+public class CookingStation : Station
 {
     protected override void OnPreparationFinished()
     {
         base.OnPreparationFinished();
-        Debug.Log("Cutting done!");
+        Debug.Log("Cooking done!");
     }
 }

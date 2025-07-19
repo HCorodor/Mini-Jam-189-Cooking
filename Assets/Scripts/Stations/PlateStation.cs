@@ -36,9 +36,9 @@ public class PlateStation : Station
         }
     }
 
-    public override void InsertIngredient(Ingredient ingredient)
+    public override bool InsertIngredient(Ingredient ingredient)
     {
-        if (ingredient.PrepareState != IngredientPrepareState.Prepared) return;
+        if (ingredient.PrepareState != IngredientPrepareState.Prepared) return false;
 
         _ingredientsOnPlate.Add(ingredient);
         Debug.Log($"Added {ingredient.Type} to plate station.");
@@ -48,10 +48,12 @@ public class PlateStation : Station
         if (isCompleteDish)
         {
             ClearPlate();
+            return true;
         }
         else
         {
             Debug.Log("Current Plate does not match any recipe yet");
+            return false;
         }
     }
 

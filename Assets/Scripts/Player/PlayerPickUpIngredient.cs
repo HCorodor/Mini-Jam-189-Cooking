@@ -55,9 +55,16 @@ public class PlayerPickUpIngredient : MonoBehaviour
 
         if (nearbyStation != null)
         {
-            nearbyStation.InsertIngredient(HeldIngredient);
-            HeldIngredient = null;
-            IsHoldingIngredient = false;
+            bool succes = nearbyStation.InsertIngredient(HeldIngredient);
+
+            if (nearbyStation.InsertIngredient(HeldIngredient))
+                {
+                    HeldIngredient = null;
+                    IsHoldingIngredient = false;
+                    return;
+                }
+
+            Debug.Log("Station rejected the ingredient. You are still holding it.");
         }
         else
         {
@@ -71,9 +78,9 @@ public class PlayerPickUpIngredient : MonoBehaviour
     public void ReceiveIngredient(Ingredient ingredient)
     {
         HeldIngredient = ingredient;
-        Debug.Log($"[ReceiveIngredient] Received: {ingredient.Type}, PrepareState: {ingredient.PrepareState}");
         IsHoldingIngredient = true;
         ingredient.PickUp();
+        Debug.Log($"[ReceiveIngredient] Received: {ingredient.Type}, PrepareState: {ingredient.PrepareState}");
         
     }
 }
