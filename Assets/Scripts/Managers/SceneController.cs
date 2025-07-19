@@ -29,17 +29,17 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Q))
-        {
-            ReloadScene(false);
-        }
-        if (Input.GetKey(KeyCode.E))
-        {
-            ReloadScene(true);
-        }
-    }
+    // private void Update()
+    // {
+    //     if (Input.GetKey(KeyCode.Q))
+    //     {
+    //         ReloadScene(false);
+    //     }
+    //     if (Input.GetKey(KeyCode.E))
+    //     {
+    //         ReloadScene(true);
+    //     }
+    // }
 
     public void LoadScene(string sceneName, bool withFade) // Simple function to load a new scene
     {

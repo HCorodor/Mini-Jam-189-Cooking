@@ -72,6 +72,13 @@ public class OrderSystem : MonoBehaviour
             if (!order.IsCompleted && order.Recipe == dish)
             {
                 order.IsCompleted = true;
+
+                float timeBonus = Mathf.Clamp(order.TimeRemaining, 0, 999f);
+                int ingredientBonus = order.Recipe.RequiredIngredients.Count * 10;
+                int finalScore = Mathf.RoundToInt(timeBonus + ingredientBonus);
+
+                ScoreManager.Instance.AddScore(finalScore);
+
                 Debug.Log($"Order Completed: {dish.DishName}");
                 return true;
             }
