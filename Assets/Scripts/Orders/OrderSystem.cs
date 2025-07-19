@@ -43,6 +43,12 @@ public class OrderSystem : MonoBehaviour
             if (order.TimeRemaining <= 0f)
             {
                 Debug.Log($"Order Failed: {order.Recipe.DishName}");
+
+                if (SatisfactionManager.Instance != null)
+                {
+                    SatisfactionManager.Instance.LoseLife();
+                }
+
                 _activeOrders.RemoveAt(i);
             }
         }
