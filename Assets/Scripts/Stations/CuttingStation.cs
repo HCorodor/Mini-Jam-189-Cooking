@@ -5,7 +5,7 @@ public class CuttingStation : Station
     private void Start()
     {
         Ingredient testIngredient = FindObjectOfType<Ingredient>();
-        InsertIngredient(testIngredient);
+        
     }
 
     protected override void OnPreparationFinished()

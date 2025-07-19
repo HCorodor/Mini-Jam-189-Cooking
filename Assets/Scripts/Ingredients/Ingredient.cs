@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum IngredientPrepareState { Unprepared, Prepared, Misprepared }
 public enum IngredientPickupState { Pickupable, PickedUp }
-public enum IngredientType { Lettuce, Meat}
+public enum IngredientType { Lettuce, Meat }
 
 public class Ingredient : MonoBehaviour
 {
@@ -30,7 +30,7 @@ public class Ingredient : MonoBehaviour
 
         PickupState = IngredientPickupState.PickedUp;
 
-        // Disable all visuals and colliders
+
         foreach (var r in _renderers) r.enabled = false;
         foreach (var c in _colliders) c.enabled = false;
     }
@@ -39,22 +39,22 @@ public class Ingredient : MonoBehaviour
     {
         PickupState = IngredientPickupState.Pickupable;
         transform.position = worldPosition;
+        gameObject.SetActive(true);
 
-        // Enable all visuals and colliders
         foreach (var r in _renderers) r.enabled = true;
         foreach (var c in _colliders) c.enabled = true;
     }
 
     public void Prepare()
-    {
-        if (PrepareState == IngredientPrepareState.Unprepared)
-        {
-            PrepareState = IngredientPrepareState.Prepared;
-        }
-
+    { 
         if (PrepareState == IngredientPrepareState.Prepared)
         {
             PrepareState = IngredientPrepareState.Misprepared;
+        }
+
+        if (PrepareState == IngredientPrepareState.Unprepared)
+        {
+            PrepareState = IngredientPrepareState.Prepared;
         }
     }
 
