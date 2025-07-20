@@ -14,6 +14,9 @@ public class Ingredient : MonoBehaviour
     [Header("Type")]
     public IngredientType Type;
 
+    [Header("Visuals")]
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+
     private Renderer[] _renderers;
     private Collider[] _colliders;
 
@@ -44,10 +47,12 @@ public class Ingredient : MonoBehaviour
 
         foreach (var r in _renderers) r.enabled = true;
         foreach (var c in _colliders) c.enabled = true;
+
+        UpdateVisual();
     }
 
     public void Prepare()
-    { 
+    {
         switch (PrepareState)
         {
             case IngredientPrepareState.Unprepared:
@@ -56,6 +61,23 @@ public class Ingredient : MonoBehaviour
             case IngredientPrepareState.Prepared:
                 PrepareState = IngredientPrepareState.Misprepared;
                 break;
+        }
+
+        UpdateVisual(); // Change sprite on prepare
+    }
+
+    private void UpdateVisual()
+    {
+        if (_spriteRenderer == null || IngredientIconLibrary.Instance == null) return;
+
+        var newSprite = IngredientIconLibrary.Instance.GetWorldSprite(Type, PrepareState);
+        if (newSprite != null)
+        {
+            _spriteRenderer.sprite = newSprite;
+        }
+        else
+        {
+            Debug.LogWarning($"Missing world sprite for {Type} in state {PrepareState}");
         }
     }
 }

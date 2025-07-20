@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: deec810019b9cca48900266e0e751dac, type: 3}
-  m_Name: Meat
+  m_Name: Misprepared_Meat
   m_EditorClassIdentifier: 
   Type: 1
-  Icon: {fileID: 2720535173406242035, guid: 9bc9eaa899e3a1545b603ca964587733, type: 3}
+  State: 2
+  WorldSprite: {fileID: 8102358098348255977, guid: 896e6e6a5267d1842bd31c7f43ad80c9, type: 3}
+  Icon: {fileID: 8102358098348255977, guid: 896e6e6a5267d1842bd31c7f43ad80c9, type: 3}

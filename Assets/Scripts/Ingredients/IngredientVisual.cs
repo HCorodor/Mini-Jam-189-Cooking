@@ -4,5 +4,7 @@ using UnityEngine;
 public class IngredientVisual : ScriptableObject
 {
     public IngredientType Type;
+    public IngredientPrepareState State;
+    public Sprite WorldSprite;
     public Sprite Icon;
 }

@@ -47,3 +47,7 @@ MonoBehaviour:
   _visuals:
   - {fileID: 11400000, guid: bb50d493971ac18418becce1850c105a, type: 2}
   - {fileID: 11400000, guid: e1072a05180398a43a7f51553922838c, type: 2}
+  - {fileID: 11400000, guid: b8b85114f23de1c4e8c04c8a806be81d, type: 2}
+  - {fileID: 11400000, guid: 5d64759104a0a2c4e949f699ac3d96b0, type: 2}
+  - {fileID: 11400000, guid: 7cf4de4e492c2cc43b6cc0b2d7bda77b, type: 2}
+  - {fileID: 11400000, guid: 924021f87bbfaf34e89952586f81d05e, type: 2}
