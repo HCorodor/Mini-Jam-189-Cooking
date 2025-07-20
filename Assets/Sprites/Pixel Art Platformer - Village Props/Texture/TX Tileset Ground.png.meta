@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: fa36dda539559424dab922d368981312
+guid: 63855be583a827a47a177f77cb41063d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7914990262028899023
-    second: Range-Weapons_0
+      213: 8652677587666043219
+    second: TX Tileset Ground_0
+  - first:
+      213: -7190719572971877601
+    second: TX Tileset Ground_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Range-Weapons_0
+      name: TX Tileset Ground_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 104
-        height: 48
+        y: 31
+        width: 129
+        height: 225
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +157,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc298e835b1b7dd60800000000000000
-      internalID: 7914990262028899023
+      spriteID: 35181d01c6c741870800000000000000
+      internalID: 8652677587666043219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_1
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 63
+        width: 66
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1b009d75ae653c90800000000000000
+      internalID: -7190719572971877601
       vertices: []
       indices: 
       edges: []
@@ -174,7 +199,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Range-Weapons_0: 7914990262028899023
+      TX Tileset Ground_0: 8652677587666043219
+      TX Tileset Ground_1: -7190719572971877601
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
