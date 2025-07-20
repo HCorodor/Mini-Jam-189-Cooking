@@ -23,22 +23,28 @@ public class InteractWithLadder : MonoBehaviour
         if (_currentLadder != null)
         {
             bool atBottom = _currentLadder.IsAtBottom(transform.position);
-            if (!isClimbing && Input.GetKeyDown(KeyCode.W) && atBottom)
+            if (!isClimbing && Input.GetKey(KeyCode.W) && atBottom)
             {
+                Debug.Log("Starting climbing");
+                anim.SetBool("isClimbing", true);
                 StartClimbing();
             }
-            anim.SetBool("isInteracting", isClimbing);
         }
         if (isClimbing)
         {
             float verticalInput = Input.GetAxis("Vertical");
-            body.velocity = new Vector2(0, verticalInput * climbSpeed);
+            body.linearVelocity = new Vector2(0, verticalInput * climbSpeed);
 
-            anim.SetBool("isInteracting", verticalInput != 0);
-            if (Input.GetKeyDown(KeyCode.Space))
+            anim.SetBool("isClimbing", true);
+        
+            if (Input.GetKey(KeyCode.S))
             {
                 StopClimbing();
             }
+        }
+        else
+        {
+            anim.SetBool("isClimbing", false);
         }
     }
 
@@ -46,15 +52,16 @@ public class InteractWithLadder : MonoBehaviour
     {
         isClimbing = true;
         body.gravityScale = -1;
-        body.velocity = Vector2.zero;
-        anim.SetBool("isInteracting", true);
+        body.linearVelocity = Vector2.zero;
+        anim.SetBool("isClimbing", true);
     }
 
     private void StopClimbing()
     {
+        Debug.Log("Stopping climbing");
         isClimbing = false;
         body.gravityScale = 3f;
-        anim.SetBool("isInteracting", false);
+        anim.SetBool("isClimbing", false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
