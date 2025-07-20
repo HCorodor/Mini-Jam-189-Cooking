@@ -46,7 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _smileyUI: {fileID: 0}
   _smileyFaces:
-  - {fileID: 1570582575325527468, guid: 182f2f4587059ac43969d69bd5fa9cbc, type: 3}
-  - {fileID: -8704524280614070974, guid: ad42bebede3494041bf3566e277af5e2, type: 3}
-  - {fileID: -811850554563380565, guid: 5d8d9a002502d6740a25db9ca799dd61, type: 3}
-  _maxLives: 3
+  - {fileID: 6606716079296791111, guid: 75abeb00d60722246b1918256f4f060c, type: 3}
+  - {fileID: -3712905566093094807, guid: f8bd983cf39b5854e9a1fa7e61964e53, type: 3}
+  - {fileID: 8087864592090994165, guid: 2a6e3f9e2adc4d642b2045831bdd9f88, type: 3}
+  - {fileID: -8528608698415736485, guid: 8bcc03bb4900fe34b955f6f0e979058f, type: 3}
+  - {fileID: 4467076008648421565, guid: 8ce5a0327aa980e4f97adb8245e41d7c, type: 3}
+  _maxLives: 5
