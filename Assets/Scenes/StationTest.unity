@@ -2054,10 +2054,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CuttingStation
       objectReference: {fileID: 0}
-    - target: {fileID: 7814660921188394041, guid: 78d1ce87ad9d93c4eb399bc7916aac83, type: 3}
-      propertyPath: _cuttingLoopSound
-      value: 
-      objectReference: {fileID: 8300000, guid: c2ada730345874742a6ec1ffe5b305bb, type: 3}
     - target: {fileID: 7849300813710071769, guid: 78d1ce87ad9d93c4eb399bc7916aac83, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.06

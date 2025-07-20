@@ -45,12 +45,12 @@ public abstract class Station : MonoBehaviour
     {
         if (currentState == StationState.Preparing)
         {
-            if (!PlayerIsNearby())
+            if (RequiresPlayerNearby() && !PlayerIsNearby())
             {
                 Debug.Log($"{gameObject.name} | Player not nearby, pausing preparation.");
                 return;
             }
-            
+
             progress += Time.deltaTime;
             progress = Mathf.Min(progress, prepareTime);
 
@@ -157,5 +157,10 @@ public abstract class Station : MonoBehaviour
         Debug.Log($"{gameObject.name} | Player distance: {distance}");
 
         return distance < 1.5f;
+    }
+
+    protected virtual bool RequiresPlayerNearby()
+    {
+        return true;
     }
 }

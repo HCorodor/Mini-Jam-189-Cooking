@@ -184,6 +184,7 @@ MonoBehaviour:
   _acceptedIngredients: 00000000
   prepareTime: 3
   _progressBarFill: {fileID: 8589561214352504985}
+  _cuttingLoopSound: {fileID: 8300000, guid: c2ada730345874742a6ec1ffe5b305bb, type: 3}
 --- !u!1001 &3920741576789574406
 PrefabInstance:
   m_ObjectHideFlags: 0
