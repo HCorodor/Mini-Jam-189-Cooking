@@ -12,6 +12,9 @@ public class SoundManager : MonoBehaviour
     [Range(0f, 1f)] public float MusicVolume = 1f;
     [Range(0f, 1f)] public float SFXVolume = 1f;
 
+    [Header("Music")]
+    [SerializeField] private AudioClip _gameplayMusic;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,6 +25,14 @@ public class SoundManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        if (_gameplayMusic != null)
+        {
+            PlayMusic(_gameplayMusic, true);
+        }
     }
 
     private void Update()

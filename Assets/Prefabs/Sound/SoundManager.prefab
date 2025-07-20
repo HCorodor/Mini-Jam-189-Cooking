@@ -177,8 +177,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicSource: {fileID: 8513409797033252213}
   _sfxSource: {fileID: 8367797560279625382}
-  MusicVolume: 1
+  MusicVolume: 0.15
   SFXVolume: 1
+  _gameplayMusic: {fileID: 8300000, guid: bd89821dfb6f5644293481a4bf794ea1, type: 3}
 --- !u!1 &8262453924082660170
 GameObject:
   m_ObjectHideFlags: 0
