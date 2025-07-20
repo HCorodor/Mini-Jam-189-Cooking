@@ -47,7 +47,19 @@ public class PlateStation : Station
 
     public override bool InsertIngredient(Ingredient ingredient)
     {
-        if (ingredient.PrepareState != IngredientPrepareState.Prepared) return false;
+        // Must be prepared to be accepted
+        if (ingredient.PrepareState != IngredientPrepareState.Prepared)
+        {
+            Debug.Log("Tried to insert unprepared ingredient.");
+            return false;
+        }
+
+        // Prevent duplicate ingredients
+        if (_ingredientsOnPlate.Any(i => i.Type == ingredient.Type))
+        {
+            Debug.Log($"Ingredient {ingredient.Type} already on plate. Ignoring duplicate.");
+            return false;
+        }
 
         _ingredientsOnPlate.Add(ingredient);
         Debug.Log($"Added {ingredient.Type} to plate station.");
@@ -57,13 +69,10 @@ public class PlateStation : Station
         if (isCompleteDish)
         {
             ClearPlate();
-            return true;
         }
-        else
-        {
-            Debug.Log("Current Plate does not match any recipe yet");
-            return false;
-        }
+
+        // Always return true if the ingredient was accepted, even if dish isn't complete yet
+        return true;
     }
 
     private bool TrySubmitDish()
