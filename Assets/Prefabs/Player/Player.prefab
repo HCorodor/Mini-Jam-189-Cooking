@@ -194,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsHoldingIngredient: 0
   HeldIngredient: {fileID: 0}
+  _pickupSFX: {fileID: 8300000, guid: 5351e8112d6653b469fefe57d34baa16, type: 3}
 --- !u!114 &6026015423377655499
 MonoBehaviour:
   m_ObjectHideFlags: 0

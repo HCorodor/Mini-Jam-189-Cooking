@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deec810019b9cca48900266e0e751dac, type: 3}
+  m_Name: Misprepared_Lettuce
+  m_EditorClassIdentifier: 
+  Type: 0
+  State: 2
+  WorldSprite: {fileID: 8102358098348255977, guid: 896e6e6a5267d1842bd31c7f43ad80c9, type: 3}
+  Icon: {fileID: 8102358098348255977, guid: 896e6e6a5267d1842bd31c7f43ad80c9, type: 3}

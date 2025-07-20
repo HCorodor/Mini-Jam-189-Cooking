@@ -5,6 +5,8 @@ public class PlayerPickUpIngredient : MonoBehaviour
     public bool IsHoldingIngredient;
     public Ingredient HeldIngredient;
 
+    [SerializeField] private AudioClip _pickupSFX;
+
     private Ingredient _currentNearbyIngredient;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -45,6 +47,11 @@ public class PlayerPickUpIngredient : MonoBehaviour
         HeldIngredient.PickUp();
         IsHoldingIngredient = true;
         _currentNearbyIngredient = null;
+
+        if (_pickupSFX != null)
+        {
+            SoundManager.Instance.PlaySFX(_pickupSFX);
+        }
     }
 
     private void DropIngredient()
@@ -82,5 +89,9 @@ public class PlayerPickUpIngredient : MonoBehaviour
         ingredient.PickUp();
         Debug.Log($"[ReceiveIngredient] Received: {ingredient.Type}, PrepareState: {ingredient.PrepareState}");
         
+        if (_pickupSFX != null)
+        {
+            SoundManager.Instance.PlaySFX(_pickupSFX);
+        }
     }
 }

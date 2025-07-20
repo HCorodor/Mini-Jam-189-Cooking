@@ -10,6 +10,11 @@ public class OrderSystem : MonoBehaviour
     [SerializeField] private float _orderInterval = 10f;
     [SerializeField] private float _orderTimeLimit = 30f;
 
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip _orderSuccessSFX;
+    [SerializeField] private AudioClip _orderFailSFX;
+    [SerializeField] private AudioClip _orderNewSFX;
+
     private float _timer;
     private List<Order> _activeOrders = new();
 
@@ -44,6 +49,8 @@ public class OrderSystem : MonoBehaviour
             {
                 Debug.Log($"Order Failed: {order.Recipe.DishName}");
 
+                SoundManager.Instance.PlaySFX(_orderFailSFX);
+
                 if (SatisfactionManager.Instance != null)
                 {
                     SatisfactionManager.Instance.LoseLife();
@@ -61,6 +68,8 @@ public class OrderSystem : MonoBehaviour
         _activeOrders.Add(order);
 
         _orderUIManager.AddOrderUI(order);
+
+        SoundManager.Instance.PlaySFX(_orderNewSFX);
 
         Debug.Log($"New Order added: {recipe.DishName}");
     }
@@ -80,6 +89,7 @@ public class OrderSystem : MonoBehaviour
                 ScoreManager.Instance.AddScore(finalScore);
 
                 Debug.Log($"Order Completed: {dish.DishName}");
+                SoundManager.Instance.PlaySFX(_orderSuccessSFX);
                 return true;
             }
         }

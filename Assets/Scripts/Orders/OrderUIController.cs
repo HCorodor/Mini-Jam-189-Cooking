@@ -20,7 +20,7 @@ public class OrderUIController : MonoBehaviour
         {
             var iconGO = Instantiate(_iconPrefab, _iconContainer);
             var image = iconGO.GetComponent<Image>();
-            var sprite = IngredientIconLibrary.Instance.GetIcon(ingredient);
+            var sprite = IngredientIconLibrary.Instance.GetIcon(ingredient, IngredientPrepareState.Prepared);
 
             if (image != null && sprite != null)
             {

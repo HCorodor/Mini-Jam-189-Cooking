@@ -51,3 +51,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7d0e5b5d77beb0648aa271a52662ad2a, type: 2}
   _orderInterval: 10
   _orderTimeLimit: 20
+  _orderSuccessSFX: {fileID: 8300000, guid: c21a8f18bca57a346b04e69aadef4159, type: 3}
+  _orderFailSFX: {fileID: 8300000, guid: 9f7b5ff6dbb9b624099593002a0e5ec1, type: 3}
+  _orderNewSFX: {fileID: 8300000, guid: 300ad5d40eefe094098b11a19197163f, type: 3}
