@@ -41,10 +41,16 @@ public abstract class Station : MonoBehaviour
     }
 
 
-    public void ManualUpdate()
+    public virtual void ManualUpdate()
     {
         if (currentState == StationState.Preparing)
         {
+            if (!PlayerIsNearby())
+            {
+                Debug.Log($"{gameObject.name} | Player not nearby, pausing preparation.");
+                return;
+            }
+            
             progress += Time.deltaTime;
             progress = Mathf.Min(progress, prepareTime);
 
@@ -141,8 +147,15 @@ public abstract class Station : MonoBehaviour
     protected virtual bool PlayerIsNearby()
     {
         var player = FindObjectOfType<InteractWithStation>();
-        if (player == null) return false;
+        if (player == null)
+        {
+            Debug.Log($"{gameObject.name} | No player found.");
+            return false;
+        }
 
-        return Vector2.Distance(player.transform.position, transform.position) < 1.5f;
+        float distance = Vector3.Distance(player.transform.position, transform.position);
+        Debug.Log($"{gameObject.name} | Player distance: {distance}");
+
+        return distance < 1.5f;
     }
 }
