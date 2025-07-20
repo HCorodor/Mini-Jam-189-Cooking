@@ -46,9 +46,9 @@ public class InteractWithStation : MonoBehaviour
         anim.SetBool("isInteracting", shouldAnimateInteraction);
 
         // ✅ Station logic update
-        if (_currentNearbyStation != null)
-        {
-            _currentNearbyStation.ManualUpdate();
-        }
+        // if (_currentNearbyStation != null)
+        // {
+        //     _currentNearbyStation.ManualUpdate();
+        // }
     }
 }

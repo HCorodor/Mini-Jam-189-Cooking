@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2266455948512814338
+--- !u!1 &4755997743860816128
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9115322779654357148}
-  - component: {fileID: 6419208928130099159}
+  - component: {fileID: 4633831017563179531}
+  - component: {fileID: 2330781167114599949}
   m_Layer: 0
-  m_Name: OrderSystemManager
+  m_Name: StationManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9115322779654357148
+--- !u!4 &4633831017563179531
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2266455948512814338}
+  m_GameObject: {fileID: 4755997743860816128}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,22 +32,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6419208928130099159
+--- !u!114 &2330781167114599949
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2266455948512814338}
+  m_GameObject: {fileID: 4755997743860816128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db47322908b5adf4fab8b587b296cea2, type: 3}
+  m_Script: {fileID: 11500000, guid: f756a4b5cf220694ca7d8e3e352d5f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _orderUIManager: {fileID: 0}
-  _possibleDishes:
-  - {fileID: 11400000, guid: 7f230b5408a05f94497839d584e94b17, type: 2}
-  - {fileID: 11400000, guid: f9dd96d99c5f6bf44843b1e41df4efb8, type: 2}
-  - {fileID: 11400000, guid: 7d0e5b5d77beb0648aa271a52662ad2a, type: 2}
-  _orderInterval: 10
-  _orderTimeLimit: 20

@@ -50,6 +50,7 @@ MonoBehaviour:
   _acceptedIngredients: 01000000
   prepareTime: 3
   _progressBarFill: {fileID: 4182078603421780515}
+  _cookingLoopSound: {fileID: 8300000, guid: a93f1b0c13218d941af11ebab6a27e28, type: 3}
 --- !u!1 &7443448182300198208
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ public class OrderUIController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _orderText;
     [SerializeField] private Image _timerFill;
+    [SerializeField] private Transform _iconContainer;
+    [SerializeField] private GameObject _iconPrefab;
 
     private Order _linkedOrder;
 
@@ -13,6 +15,22 @@ public class OrderUIController : MonoBehaviour
     {
         _linkedOrder = order;
         _orderText.text = order.Recipe.DishName;
+
+        foreach (var ingredient in order.Recipe.RequiredIngredients)
+        {
+            var iconGO = Instantiate(_iconPrefab, _iconContainer);
+            var image = iconGO.GetComponent<Image>();
+            var sprite = IngredientIconLibrary.Instance.GetIcon(ingredient);
+
+            if (image != null && sprite != null)
+            {
+                image.sprite = sprite;
+            }
+            else
+            {
+                Debug.LogWarning($"Missing icon for ingredient: {ingredient}");
+            }
+        }
     }
 
     public void ManualUpdate(float deltaTime)
